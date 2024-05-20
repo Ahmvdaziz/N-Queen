@@ -21,22 +21,30 @@ def solve(r, queens):
             queens.pop()
 
 if __name__ == "__main__":
-    N = int(input("Enter the size of the chessboard: "))  # Prompting the user for input
-    res = []
+    while True:
+        user_input = input("Enter the size of the chessboard (or 'e' to exit): ")
+        if user_input.lower() == 'e':
+            break
+        
+        try:
+            N = int(user_input)
+            res = []
 
-    solve(0, [])  # Solve the N-Queens problem starting from the first row and an empty queens list
+            solve(0, [])  # Solve the N-Queens problem starting from the first row and an empty queens list
 
-    print("Number of solutions:", len(res))  # Print the number of solutions
-   
-    for solution in res:
-        # Create a grid of size N*N and initialize all cells with '.'
-        grid = [['.' for _ in range(N)] for _ in range(N)]
+            print("Number of solutions:", len(res))  # Print the number of solutions
+            
+            for solution in res:
+                # Create a grid of size N*N and initialize all cells with '.'
+                grid = [['.' for _ in range(N)] for _ in range(N)]
 
-        # Place queens on the grid based on the current solution
-        for i, j in solution:
-            grid[i][j] = 'Q'
+                # Place queens on the grid based on the current solution
+                for i, j in solution:
+                    grid[i][j] = 'Q'
 
-        # Print the grid
-        for row in grid:
-            print(' '.join(row))
-        print()
+                # Print the grid
+                for row in grid:
+                    print(' '.join(row))
+                print()
+        except ValueError:
+            print("Invalid input. Please enter an integer or 'e' to exit.")
