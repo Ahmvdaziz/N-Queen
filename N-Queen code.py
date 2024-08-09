@@ -6,7 +6,7 @@ def valid(r, c, queens):
         if i[0] == r or i[1] == c or i[0] - i[1] == r - c or i[0] + i[1] == r + c:
             return False
     return True
-
+    
 def solve(r, queens):
     global res
     n = len(queens)
